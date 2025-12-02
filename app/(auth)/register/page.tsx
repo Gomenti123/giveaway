@@ -15,6 +15,8 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import Loader from "@/app/(pages)/loader";
+import Link from "next/link";
 
 const Page = () => {
   const [fullName, setFullName] = useState("");
@@ -22,112 +24,156 @@ const Page = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [occupation, setOccupation] = useState("");
   const [check, setCheck] = useState(false);
-
+  const [loading, setLoading] = useState(false);
+  const style = {};
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    setLoading(true);
     setTimeout(() => {
-      console.log("Clicked");
       setFullName("");
       setEmail("");
       setPhoneNumber("");
       setOccupation("");
-    }, 2000);
+      setCheck(true);
+      setLoading(false);
+    }, 4000);
   };
   return (
-    <div className="w-full h-screen p-10 flex justify-center items-center">
-      <form
-        onSubmit={handleSubmit}
-        action=""
-        className="rounded-md border w-full min-h-[300px] p-5"
-      >
-        <div className="flex flex-col gap-5">
-          <div className="flex flex-col gap-1">
-            <label>Full Name :</label>
-            <input
-              type="text"
-              value={fullName}
-              onChange={(e) => {
-                setFullName(e.target.value);
-              }}
-              required
-              className="border outline-none rounded-md p-1"
-              placeholder="Enter your name"
-            />
-          </div>
-
-          <div className="flex flex-col gap-1">
-            <label>Email Address :</label>
-            <input
-              type="email"
-              value={email}
-              required
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              className="border outline-none rounded-md p-1"
-              placeholder="Enter your name"
-            />
-          </div>
-
-          <div className="flex flex-col gap-1">
-            <label>Phone Number :</label>
-            <input
-              type="number"
-              value={phoneNumber}
-              required
-              onChange={(e) => {
-                setPhoneNumber(e.target.value);
-              }}
-              className="border outline-none rounded-md p-1"
-              placeholder="Enter your name"
-            />
-          </div>
-
-          <div className="flex flex-col gap-1">
-            <label>Occupation :</label>
-            <input
-              type="text"
-              value={occupation}
-              required
-              onChange={(e) => {
-                setOccupation(e.target.value);
-              }}
-              className="border outline-none rounded-md p-1"
-              placeholder="Enter your name"
-            />
-          </div>
-          <div className="flex flex-col gap-1">
-            <label>Gender :</label>
-            <div className="flex items-center gap-5">
-              <div className="flex items-center gap-1">
-                <label htmlFor="male">Male</label>
-                <input
-                  type="checkbox"
-                  name="male"
-                  id="1"
-                  className="border outline-none rounded-md p-1"
-                />
-              </div>
-              <div className="flex items-center gap-1">
-                <label htmlFor="female">Female</label>
-                <input
-                  type="checkbox"
-                  name="female"
-                  id="1"
-                  className="border outline-none rounded-md p-1"
-                />
+    <div className="w-full h-screen p-10">
+      <div className="m-5 flex justify-center items-center">
+        {check ? (
+          <div
+            className="top-[0.5%] p-3"
+            style={{
+              width: "100%",
+              height: "100%",
+              position: "absolute",
+              background: "rgba(255, 255, 255, 0.2)",
+              boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+              backdropFilter: "blur(5px)",
+              WebkitBackdropFilter: "blur(5px)",
+              border: "1px solid rgba(255, 255, 255, 1)",
+            }}
+          >
+            <div className="flex justify-center items-center h-full">
+              <div className="w-[300px] min-h-[250px] flex flex-col gap-5 justify-center items-center rounded-md border border-neutral-300 p-2">
+                <div className="flex flex-col gap-1">
+                  <h1 className="text-[20px] font-semibold">
+                    Your Information has been successfully registered
+                  </h1>
+                  <p className="text-[15px] text-red-400">
+                    Note: Contact your agent for your unique access token, you'd
+                    need it to access your dashboard
+                  </p>
+                </div>
+                <Link href={"/signin"}>
+                  <button className="p-2  rounded-md w-[180px] text-[18px] bg-amber-400 text-white">
+                    Sign In
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
-        </div>
+        ) : (
+          ""
+        )}
+      </div>
 
-        <button
-          type="submit"
-          className="bg-amber-400 mt-5 p-2 w-full flex gap-1 items-center justify-center rounded-full"
+      <div className=" flex justify-center items-center">
+        <form
+          onSubmit={handleSubmit}
+          action=""
+          className="rounded-md border w-full min-h-[300px] p-5"
         >
-          <AlertDialogDemo check={check} />
-        </button>
-      </form>
+          <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-1">
+              <label>Full Name :</label>
+              <input
+                type="text"
+                value={fullName}
+                onChange={(e) => {
+                  setFullName(e.target.value);
+                }}
+                required
+                className="border outline-none rounded-md p-1"
+                placeholder="Enter your name"
+              />
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <label>Email Address :</label>
+              <input
+                type="email"
+                value={email}
+                required
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                className="border outline-none rounded-md p-1"
+                placeholder="Enter your name"
+              />
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <label>Phone Number :</label>
+              <input
+                type="number"
+                value={phoneNumber}
+                required
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value);
+                }}
+                className="border outline-none rounded-md p-1"
+                placeholder="Enter your name"
+              />
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <label>Occupation :</label>
+              <input
+                type="text"
+                value={occupation}
+                required
+                onChange={(e) => {
+                  setOccupation(e.target.value);
+                }}
+                className="border outline-none rounded-md p-1"
+                placeholder="Enter your name"
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <label>Gender :</label>
+              <div className="flex items-center gap-5">
+                <div className="flex items-center gap-1">
+                  <label htmlFor="male">Male</label>
+                  <input
+                    type="checkbox"
+                    name="male"
+                    id="1"
+                    className="border outline-none rounded-md p-1"
+                  />
+                </div>
+                <div className="flex items-center gap-1">
+                  <label htmlFor="female">Female</label>
+                  <input
+                    type="checkbox"
+                    name="female"
+                    id="1"
+                    className="border outline-none rounded-md p-1"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            className="bg-amber-400 mt-5 p-2 w-full flex gap-1 items-center justify-center rounded-full h-[45px] text-[17px] text-white"
+          >
+            {loading ? <Loader /> : "Claim Prize"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
