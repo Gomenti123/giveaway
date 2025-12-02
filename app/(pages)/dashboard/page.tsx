@@ -6,12 +6,12 @@ import Navigation from "./navigation";
 
 const Page = () => {
   return (
-    <div className="w-full p-3 h-screen">
+    <div className="w-full p-5 h-screen">
       <div className="rounded-md h-[800px] flex flex-col gap-5">
         <h1 className="text-[20px] font-semibold text-neutral-600">
           Hello Jadrolita JAvis
         </h1>
-        <div className="border rounded-md h-[200px] p-2 ">
+        <div className="border rounded-md h-[200px] p-2">
           <div className="flex w-full justify-between items-center">
             <div className="flex items-center gap-1">
               <CiWallet className="text-[30px]" />
@@ -25,15 +25,17 @@ const Page = () => {
           </div>
 
           <div>
-            <div className="flex items-center">
+            <div className="flex items-center pt-1">
               <LuDollarSign className="text-[30px]" />
               <h1 className="text-[25px]">20,000.45</h1>
             </div>
           </div>
 
-          <p className="text-neutral-500 text-[15px]">
-            Updated few seconds ago
-          </p>
+          <div>
+            <p className="text-neutral-500 pt-3 text-[15px]">
+              Updated few seconds ago
+            </p>
+          </div>
         </div>
         <div className="w-full grid grid-cols-3 gap-5">
           <div className="border rounded-md h-[100px] "></div>
