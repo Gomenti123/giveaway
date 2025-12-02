@@ -13,7 +13,7 @@ const Page = () => {
           <h1 className="text-[20px] font-semibold text-white">
             Hello Jadrolita JAvis
           </h1>
-          <div className=" rounded-md min-h-[140px] p-2 bg-[#e4e494]">
+          <div className=" rounded-md min-h-[100px] p-2 bg-[#e4e494]">
             <div className="flex w-full justify-between items-center">
               <div className="flex items-center gap-1">
                 <CiWallet className="text-[30px]" />
