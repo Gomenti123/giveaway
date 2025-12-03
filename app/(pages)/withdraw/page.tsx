@@ -57,6 +57,17 @@ const Page = () => {
                   transactions are processed instantly.
                 </p>
               </div>
+              <div className="px-5 w-full py-3">
+                <button
+                  onClick={() => {
+                    setCheck(false);
+                  }}
+                  className="border rounded-md p-2 w-full "
+                >
+                  Cancel
+                </button>
+              </div>
+
               {/* <Link className="w-full flex justify-center" href={"/signin"}>
               <button className="p-2  rounded-md w-[180px] text-[18px] bg-[#e4e494] text-black">
                 Sign In
