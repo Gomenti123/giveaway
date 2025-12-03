@@ -11,7 +11,7 @@ const Page = () => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [occupation, setOccupation] = useState("");
-  const [check, setCheck] = useState(false);
+  const [check, setCheck] = useState(true);
   const [loading, setLoading] = useState(false);
   const style = {};
   const handleSubmit = (e: any) => {
@@ -33,7 +33,7 @@ const Page = () => {
         <div className="m-5 flex justify-center items-center">
           {check ? (
             <div
-              className="top-[0.5%] p-3"
+              className="top-[0.5%] p-3 w-[90%] h-[1040px]"
               style={{
                 width: "100%",
                 height: "100%",
