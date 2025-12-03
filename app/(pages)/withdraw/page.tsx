@@ -2,55 +2,72 @@
 import React, { useState } from "react";
 
 const Page = () => {
-  const [method, setMethod] = useState("Bank Account");
+  const [method, setMethod] = useState("Account Holder Name");
   const [placeHolder, setPlaceHolder] = useState("Account Number");
   const [show, setShow] = useState(true);
+  const [active, setActive] = useState(3);
   return (
-    <div className="p-5 w-full">
+    <div className="p-5 w-full min-h-screen bg-[#080808] text-white">
       <div className="flex flex-col gap-5">
         <div>
-          <h1 className="text-[20px] font-semibold ">Withdraw Funds</h1>
-          <p className="text-[15px] text-neutral-500">
+          <h1 className="text-[25px] font-semibold ">Withdraw Funds</h1>
+          <p className="text-[15px] text-neutral-400">
             Transfer your funds to your bank account or to your digital wallet
           </p>
         </div>
 
-        <div className="border flex flex-col gap-5 p-3 min-h-[300px] rounded-md">
-          <div>
+        <div className="flex flex-col gap-5 p-3 min-h-[300px] rounded-md">
+          {/* <div>
             <h1 className="text-[20px] font-semibold">Withdraw Funds</h1>
-            <p className="text-[15px] text-neutral-500">
+            <p className="text-[15px] text-neutral-400">
               Choose your preferred withdrawal method
             </p>
-          </div>
+          </div> */}
 
           <div className="flex flex-col gap-3">
-            <p className="text-[13px] text-neutral-500">Withdrawal Method</p>
+            <p className="text-[13px] text-neutral-400">Withdrawal Method</p>
             <div
               onClick={() => {
                 setMethod("CashApp Tag");
                 setPlaceHolder("$Username");
                 setShow(false);
+                setActive(1);
               }}
-              className="bg-green-200 flex justify-center items-center rounded-md h-[70px]"
+              className={`${
+                active == 1
+                  ? "bg-[#dada62] text-black font-medium flex justify-center items-center rounded-md h-[70px]"
+                  : "bg-[#e4e494] text-black font-medium flex justify-center items-center rounded-md h-[70px]"
+              }`}
+              // className="bg-[#dada62] text-black font-medium flex justify-center items-center rounded-md h-[70px]"
             >
               Cash App{" "}
             </div>
             <div
-              className="bg-green-200 rounded-md h-[70px] flex justify-center items-center "
+              className={`${
+                active == 2
+                  ? "bg-[#dada62] text-black font-medium flex justify-center items-center rounded-md h-[70px]"
+                  : "bg-[#e4e494] text-black font-medium flex justify-center items-center rounded-md h-[70px]"
+              }`}
               onClick={() => {
                 setMethod("PayPal Email");
                 setPlaceHolder("email@example.com");
                 setShow(false);
+                setActive(2);
               }}
             >
               PayPal
             </div>
             <div
-              className="bg-green-200 rounded-md h-[70px] flex justify-center items-center "
+              className={`${
+                active == 3
+                  ? "bg-[#dada62] text-black font-medium flex justify-center items-center rounded-md h-[70px]"
+                  : "bg-[#e4e494] text-black font-medium flex justify-center items-center rounded-md h-[70px]"
+              }`}
               onClick={() => {
-                setMethod("Bank Account");
+                setMethod("Account Holder Name");
                 setPlaceHolder("Account Number");
                 setShow(true);
+                setActive(3);
               }}
             >
               Bank Account
@@ -61,36 +78,36 @@ const Page = () => {
             <div className="flex flex-col gap-1">
               <label htmlFor="">Amount (USD)</label>
               <input
-                className="outline-none border rounded-md p-2"
+                className="border border-neutral-700 outline-none rounded-md p-2 bg-[#0d0d0d]"
                 type="text"
                 placeholder="0.00"
               />
-              <p className="text-neutral-500 text-[15px]">
+              <p className="text-neutral-400 text-[15px]">
                 Available balance: $20,000.45{" "}
               </p>
             </div>
             {show ? (
-              <div>
+              <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1">
-                  <label htmlFor="">{method}</label>
+                  <label htmlFor="">Bank Name</label>
                   <input
-                    className="outline-none border rounded-md p-2"
+                    className="border border-neutral-700 outline-none rounded-md p-2 bg-[#0d0d0d]"
                     type="text"
                     placeholder={placeHolder}
                   />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <label htmlFor="">{method}</label>
+                  <label htmlFor="">Account Number</label>
                   <input
-                    className="outline-none border rounded-md p-2"
+                    className="border border-neutral-700 outline-none rounded-md p-2 bg-[#0d0d0d]"
                     type="text"
                     placeholder={placeHolder}
                   />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <label htmlFor="">{method}</label>
+                  <label htmlFor="">Routing Number</label>
                   <input
-                    className="outline-none border rounded-md p-2"
+                    className="border border-neutral-700 outline-none rounded-md p-2 bg-[#0d0d0d]"
                     type="text"
                     placeholder={placeHolder}
                   />
@@ -103,7 +120,7 @@ const Page = () => {
             <div className="flex flex-col gap-1">
               <label htmlFor="">{method}</label>
               <input
-                className="outline-none border rounded-md p-2"
+                className="border border-neutral-700 outline-none rounded-md p-2 bg-[#0d0d0d]"
                 type="text"
                 placeholder={placeHolder}
               />
@@ -111,7 +128,7 @@ const Page = () => {
           </div>
 
           <div>
-            <button className="border rounded-md w-full p-2 bg-linear-to-r">
+            <button className="border border-neutral-700 outline-none rounded-md p-2 bg-[#e4e494] text-black font-medium w-full">
               Submit Withdrawal Request
             </button>
           </div>
