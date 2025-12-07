@@ -1,6 +1,7 @@
 "use client";
 
 import Loader from "@/app/(pages)/loader";
+import Image from "next/image";
 import Link from "next/link";
 import { GiPartyPopper } from "react-icons/gi";
 
@@ -14,7 +15,16 @@ const Page = () => {
   const check = false;
   return (
     <div className="bg-[#080808] py-5 px-10 flex flex-col gap-[50px]">
-      <h1 className="text-white">LOGO</h1>
+      <div>
+        <Image
+          className="dark:invert"
+          src="/logo.png"
+          alt="card logo"
+          width={100}
+          height={100}
+        />
+      </div>
+
       <div className="w-full h-screen">
         <div className="m-5 flex justify-center items-center">
           {check ? (

@@ -2,6 +2,7 @@
 
 import Loader from "@/app/(pages)/loader";
 import { Divide } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { GiPartyPopper } from "react-icons/gi";
@@ -11,7 +12,7 @@ const Page = () => {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [occupation, setOccupation] = useState("");
-  const [check, setCheck] = useState(true);
+  const [check, setCheck] = useState(false);
   const [loading, setLoading] = useState(false);
   const style = {};
   const handleSubmit = (e: any) => {
@@ -28,7 +29,16 @@ const Page = () => {
   };
   return (
     <div className="bg-[#080808] py-5 px-10 flex flex-col gap-[50px]">
-      <h1 className="text-white">LOGO</h1>
+      <div>
+        <Image
+          className="dark:invert"
+          src="/logo.png"
+          alt="card logo"
+          width={100}
+          height={100}
+        />
+      </div>
+
       <div className="w-full h-screen">
         <div className="m-5 flex justify-center items-center">
           {check ? (
@@ -156,7 +166,7 @@ const Page = () => {
 
               <button
                 type="submit"
-                className="bg-[#e4e494] mt-5 p-2 w-full flex gap-1 items-center justify-center font-medium rounded-full text-black h-[45px] text-[17px]"
+                className="bg-[#e4e494] mt-10 p-2 w-full flex gap-1 items-center justify-center font-medium rounded-full text-black h-[45px] text-[17px]"
               >
                 {loading ? (
                   <Loader />
