@@ -1,20 +1,29 @@
-import React from "react";
+"use client";
+
 import { CiWallet } from "react-icons/ci";
 import { MdKeyboardArrowDown, MdOutlineVerifiedUser } from "react-icons/md";
 import { LuDollarSign } from "react-icons/lu";
-import Navigation from "./navigation";
+
 import { PiHandWithdraw } from "react-icons/pi";
 import Image from "next/image";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { redirect } from "next/navigation";
 
 const Page = () => {
+  const name = useSelector((state: any) => {
+    return state.fullName;
+  });
+  const confirmed = localStorage.getItem("confirm");
+
+  if (confirmed !== "true" || confirmed == null) {
+    redirect("/register");
+  }
   return (
     <div className="bg-[#080808] text-neutral-700 min-h-screen ">
       <div className="w-full p-5 h-full ">
         <div className="rounded-md h-full flex flex-col gap-5">
-          <h1 className="text-[20px] font-semibold text-white">
-            Hello Jadrolita JAvis
-          </h1>
+          <h1 className="text-[20px] font-semibold text-white">Hello {name}</h1>
           <div className=" rounded-md min-h-[130px] p-2 bg-[#e4e494]">
             <div className="flex w-full justify-between items-center">
               <div className="flex items-center gap-1">

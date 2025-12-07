@@ -1,11 +1,14 @@
 "use client";
 
 import Loader from "@/app/(pages)/loader";
+import { setName } from "@/app/global/redux";
 import { Divide } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useState } from "react";
 import { GiPartyPopper } from "react-icons/gi";
+import { useDispatch, useSelector } from "react-redux";
 
 const Page = () => {
   const [fullName, setFullName] = useState("");
@@ -15,9 +18,14 @@ const Page = () => {
   const [check, setCheck] = useState(false);
   const [loading, setLoading] = useState(false);
   const style = {};
+  const dispatch = useDispatch();
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
     setLoading(true);
+    dispatch(setName(fullName));
+
+    localStorage.setItem("confirm", "true");
     setTimeout(() => {
       setFullName("");
       setEmail("");
@@ -27,6 +35,11 @@ const Page = () => {
       setLoading(false);
     }, 4000);
   };
+  const confirmed = localStorage.getItem("confirm");
+
+  if (confirmed == "true" || confirmed !== null) {
+    redirect("/dashboard");
+  }
   return (
     <div className="bg-[#080808] py-5 px-10 flex flex-col gap-[50px]">
       <div>
