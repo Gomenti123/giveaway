@@ -24,9 +24,12 @@ export default function Home() {
 
           <Image src={"/giftw.png"} alt="#" width={300} height={300} />
 
-          <button className="p-2 rounded-md bg-[#e4e494] text-black w-[70%]  text-[20px] mt-5 font-semibold">
-            <Link href={"/register"}>Register Now</Link>
-          </button>
+          <Link
+            className="p-2 rounded-md bg-[#e4e494] text-black w-[70%]  text-[20px] mt-5 font-semibold text-center"
+            href={"/register"}
+          >
+            Register Now
+          </Link>
 
           <div className="row-span-1 mt-10 ">
             <h1 className="text-neutral-400 font-medium p-1">
