@@ -16,7 +16,7 @@ export default function Home() {
             height={100}
           />
         </div>
-        <div className="row-span-6 text-white flex w-full  flex-col items-center justify-center">
+        <div className="row-span-6 text-white flex w-full  flex-col items-center mt-10">
           <div className="flex items-center gap-1">
             <h1 className="font-semibold text-[30px]">Congratulations</h1>
             <GiPartyPopper className="text-[30px] text-red-300" />
