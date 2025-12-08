@@ -27,20 +27,21 @@ export default function Home() {
           <button className="p-2 rounded-md bg-[#e4e494] text-black w-[70%]  text-[20px] mt-5 font-semibold">
             <Link href={"/register"}>Register Now</Link>
           </button>
-        </div>
 
-        <div className="row-span-1 bg-[#e4e494] ">
-          <h1 className="text-neutral-800 font-medium p-1">
-            Our Partners and Trusted Sponsors
-          </h1>
-          <Marquee className="bg-neutral-800 w-[100px] h-20 overflow-hidden p-5 flex items-center gap-5 ">
-            <Image src="/cisco.png" alt="#" width={100} height={100} />
-            <Image src="/disney.png" alt="#" width={100} height={100} />
-            <Image src="/nasa.png" alt="#" width={100} height={100} />
-            <Image src="/amazon.png" alt="#" width={100} height={100} />
-            <Image src="/ibm.png" alt="#" width={100} height={100} />
-            <Image src="/micro.png" alt="#" width={100} height={100} />
-          </Marquee>
+          <div className="row-span-1 mt-10 ">
+            <h1 className="text-neutral-400 font-medium p-1">
+              Our Partners and Trusted Sponsors
+            </h1>
+            <Marquee className="bg-neutral-800 w-[100px] h-20 overflow-hidden p-5  ">
+              <div className="flex gap-5 p-5">
+                <Image src="/cisco.png" alt="#" width={50} height={50} />
+                <Image src="/disney.png" alt="#" width={50} height={50} />
+                <Image src="/amazon.png" alt="#" width={150} height={50} />
+                <Image src="/ibm.png" alt="#" width={100} height={50} />
+                <Image src="/micro.png" alt="#" width={130} height={50} />
+              </div>
+            </Marquee>
+          </div>
         </div>
       </div>
     </div>
