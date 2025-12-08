@@ -14,11 +14,7 @@ const Page = () => {
   const name = useSelector((state: any) => {
     return state.fullName;
   });
-  const confirmed = localStorage.getItem("confirm");
 
-  if (confirmed !== "true" || confirmed == null) {
-    redirect("/register");
-  }
   return (
     <div className="bg-[#080808] text-neutral-700 min-h-screen ">
       <div className="w-full p-5 h-full ">

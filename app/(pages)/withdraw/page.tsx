@@ -19,11 +19,6 @@ const Page = () => {
       setCheck(true);
     }, 4000);
   };
-  const confirmed = localStorage.getItem("confirm");
-
-  if (confirmed !== "true" || confirmed == null) {
-    redirect("/register");
-  }
 
   return (
     <div className="p-5 w-full min-h-screen bg-[#080808] text-white">

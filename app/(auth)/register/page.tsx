@@ -37,9 +37,6 @@ const Page = () => {
   };
   const confirmed = localStorage.getItem("confirm");
 
-  if (confirmed == "true" || confirmed !== null) {
-    redirect("/dashboard");
-  }
   return (
     <div className="bg-[#080808] py-5 px-10 flex flex-col gap-[50px]">
       <div>
