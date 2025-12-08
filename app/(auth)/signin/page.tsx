@@ -3,16 +3,31 @@
 import Loader from "@/app/(pages)/loader";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { useState } from "react";
 import { GiPartyPopper } from "react-icons/gi";
+import { toast } from "sonner";
 
 const Page = () => {
+  const token = "9KK3lpv3y";
+  const [loading, setLoading] = useState(false);
+  const [accessToken, setAccessToken] = useState("");
   const handleSubmit = (e: any) => {
     e.preventDefault();
+    setLoading(true);
     setTimeout(() => {
       console.log("Clicked");
+      if (accessToken !== token) {
+        toast("Incorrect Access Token");
+      } else {
+        redirect("/dashboard");
+      }
+      setLoading(false);
     }, 2000);
   };
+
   const check = false;
+
   return (
     <div className="bg-[#080808] py-5 px-10 flex flex-col gap-[50px]">
       <div>
@@ -78,6 +93,7 @@ const Page = () => {
                   <label>Email Address :</label>
                   <input
                     type="email"
+                    required
                     className="border border-neutral-700 outline-none rounded-md p-2 bg-[#0d0d0d]"
                   />
                 </div>
@@ -85,20 +101,25 @@ const Page = () => {
                 <div className="flex flex-col gap-2">
                   <label>Access Token :</label>
                   <input
-                    type="number"
-                    className="border border-neutral-700 outline-none rounded-md p-2 bg-[#0d0d0d]"
+                    type="text"
+                    required
+                    value={accessToken}
+                    onChange={(e) => {
+                      setAccessToken(e.target.value);
+                    }}
+                    className="border 
+                    border-neutral-700 outline-none rounded-md p-2 bg-[#0d0d0d]"
                   />
                   <p className="text-[12px] text-red-400">
                     Kindly contact your agent to get your unique access token
                   </p>
                 </div>
               </div>
-
               <button
                 type="submit"
-                className="bg-[#e4e494] mt-5 p-2 w-full flex gap-1 items-center justify-center font-medium rounded-full text-black h-[45px] text-[17px]"
+                className="bg-[#e4e494] mt-10 p-2 w-full flex gap-1 items-center justify-center font-medium rounded-full text-black h-[45px] text-[17px]"
               >
-                <h1>Access Dashboard</h1>
+                {loading ? <Loader /> : <h1>Access Dashboard</h1>}
               </button>
             </form>
           </div>
